@@ -25,7 +25,9 @@ jobs:
           git config user.email "actions@github.com"
           git config user.name "GitHub Actions - update submodules"
 
-          SUBMODULE_COMMIT_MSG=$(git log -1 --pretty=%B models/child2)
+          cd models/child2
+          SUBMODULE_MSG=$(git log origin/main -1 --pretty=%B | tr '\n' ' ')
+          cd -> /dev/null
           NEW_COMMIT_MSG="[child2 Update] => $SUBMODULE_MSG"
 
           git add models/child2
