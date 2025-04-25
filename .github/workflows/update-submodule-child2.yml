@@ -18,7 +18,7 @@ jobs:
 
       - name: Pull & update specific submodule (child2)
         run: |
-            git submodule update --remote --merge --recursive models/child2
+            git submodule update --remote --recursive models/child2
 
       - name: Commit and push changes to master-repo
         run: |
