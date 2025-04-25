@@ -24,6 +24,10 @@ jobs:
         run: |
           git config user.email "actions@github.com"
           git config user.name "GitHub Actions - update submodules"
-          git add --all
-          git commit -m "Update submodules to latest commit: child2" || echo "No changes to commit"
+
+          SUBMODULE_COMMIT_MSG=$(git log -1 --pretty=%B models/child2)
+          NEW_COMMIT_MSG="[child2 Update] => $SUBMODULE_MSG"
+
+          git add models/child2
+          git commit -m "$NEW_COMMIT_MSG" || echo "No changes to commit"
           git push
