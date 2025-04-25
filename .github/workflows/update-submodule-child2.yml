@@ -16,12 +16,11 @@ jobs:
           token: ${{ secrets.MASTER_REPO_ACCESS_TOKEN }}
           submodules: true
 
-      - name: Pull & update submodules recursively
+      - name: Pull & update specific submodule (child2)
         run: |
-          git submodule update --init --recursive
-          git submodule update --recursive --remote
+            git submodule update --remote --merge --recursive models/child2
 
-      - name: Commit
+      - name: Commit and push changes to master-repo
         run: |
           git config user.email "actions@github.com"
           git config user.name "GitHub Actions - update submodules"
